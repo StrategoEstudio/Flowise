@@ -256,20 +256,4 @@ export async function start(): Promise<void> {
 
     const host = process.env.HOST
     const port = parseInt(process.env.PORT || '', 10) || 3000
-    const server = http.createServer(serverApp.app)
-
-    const io = new Server(server, {
-        cors: getCorsOptions()
-    })
-
-    await serverApp.initDatabase()
-    await serverApp.config(io)
-
-    server.listen(port, host, () => {
-        logger.info(`⚡️ [server]: Flowise Server is listening at ${host ? 'http://' + host : ''}:${port}`)
-    })
-}
-
-export function getInstance(): App | undefined {
-    return serverApp
-}
+    const server = http.createServer(serverApp
